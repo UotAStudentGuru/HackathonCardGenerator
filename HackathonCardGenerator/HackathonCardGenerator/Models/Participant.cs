@@ -9,6 +9,6 @@ namespace HackathonCardGenerator.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string TeamName { get; set; }
-        public string Type { get; set; }
+        public ParticipantType Type { get; set; }
     }
 }

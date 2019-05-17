@@ -26,11 +26,6 @@ namespace HackathonCardGenerator
         {
             InitializeComponent();
         }
-
-        private void GenerateButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            var participants = (DataContext as MainWindowViewModel).Participants;
-            CardGenerator.Generator(participants,"C:/cards");
-        }
+        
     }
 }

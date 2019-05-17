@@ -34,7 +34,7 @@ namespace HackathonCardGenerator.Helpers
                 BitmapEncoder encoder = new PngBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(bframe));
 
-                using (var fileStream = new FileStream(path + subfolder + i.Name + ".png", FileMode.Create))
+                using (var fileStream = new FileStream(path + subfolder + i.Name + " " +i.Surname + ".png", FileMode.Create))
                 {
                     encoder.Save(fileStream);
                 }
@@ -68,7 +68,7 @@ namespace HackathonCardGenerator.Helpers
                 else
                     tLocation.Y += 200;
                 drawingContext.DrawText(
-                    new FormattedText(participant.Type, CultureInfo.InvariantCulture, FlowDirection.LeftToRight,
+                    new FormattedText(participant.Type.ToString(), CultureInfo.InvariantCulture, FlowDirection.LeftToRight,
                         new Typeface("Segoe UI"), 72, System.Windows.Media.Brushes.Black), tLocation);
             }
             var bitmap = new RenderTargetBitmap((int)background.Width, (int)background.Height, 96, 96,

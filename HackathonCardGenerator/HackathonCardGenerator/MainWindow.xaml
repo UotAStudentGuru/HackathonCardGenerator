@@ -5,17 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HackathonCardGenerator"
         xmlns:viewModels="clr-namespace:HackathonCardGenerator.ViewModels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:models="clr-namespace:HackathonCardGenerator.Models"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="500">
+        Title="MainWindow" Height="500" Width="580">
     <Window.DataContext>
         <viewModels:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="models:ParticipantType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="TablesListView" ItemsSource="{Binding Participants}" SelectionMode="Multiple" HorizontalAlignment="Stretch">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="5">
+            <StackPanel>
+                <Label Content="Name:"></Label>
+                <TextBox Width="110" Text="{Binding NewParticipant.Name, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Surname:"></Label>
+                <TextBox Width="110" Text="{Binding NewParticipant.Surname, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Team:"></Label>
+                <TextBox Width="110" Text="{Binding NewParticipant.TeamName, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Type:"></Label>
+                <ComboBox  ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedIndex="1" SelectedItem="{Binding NewParticipant.Type, Mode=OneWayToSource}">
+                  
+                </ComboBox>
+            </StackPanel>
+            <Button Content="Add Participant" Height="30" Width="100" Margin="5" VerticalAlignment="Bottom" Command="{Binding AddParticipantCommand}"/>
+        </StackPanel>
+        <ListView x:Name="TablesListView" ItemsSource="{Binding Participants}" Grid.Row="1" SelectionMode="Multiple" HorizontalAlignment="Stretch">
             <ListView.View>
                 <GridView AllowsColumnReorder="True" >
                     <GridViewColumn Header="Όνομα" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
@@ -26,6 +58,14 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="GenerateButton" Content="Generate"  Grid.Row="1" Background="#4052ab" Foreground="White" Click="GenerateButton_OnClick"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ClearButton" Grid.Column="0" Content="Clear"  Background="DarkRed" Foreground="White" Command="{Binding ClearCommand}"/>
+            <Button x:Name="GenerateButton" Grid.Column="1" Content="Generate"  Background="#4052ab" Foreground="White" Command="{Binding AddParticipantsCommand}"/>
+        </Grid>
+        
     </Grid>
 </Window>

@@ -1,0 +1,31 @@
+﻿<Window x:Class="HackathonCardGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackathonCardGenerator"
+        xmlns:viewModels="clr-namespace:HackathonCardGenerator.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="500">
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="TablesListView" ItemsSource="{Binding Participants}" SelectionMode="Multiple" HorizontalAlignment="Stretch">
+            <ListView.View>
+                <GridView AllowsColumnReorder="True" >
+                    <GridViewColumn Header="Όνομα" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Επίθετο" Width="Auto" DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="Ομάδα" Width="Auto" DisplayMemberBinding="{Binding TeamName}"/>
+                    <GridViewColumn Header="Τύπος" Width="Auto" DisplayMemberBinding="{Binding Type}"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="GenerateButton" Content="Generate"  Grid.Row="1" Background="#4052ab" Foreground="White" Click="GenerateButton_OnClick"/>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackathonCardGenerator", "HackathonCardGenerator\HackathonCardGenerator.csproj", "{CC6791E0-C11D-435D-9BD2-C973F5A1F9AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC6791E0-C11D-435D-9BD2-C973F5A1F9AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6791E0-C11D-435D-9BD2-C973F5A1F9AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6791E0-C11D-435D-9BD2-C973F5A1F9AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6791E0-C11D-435D-9BD2-C973F5A1F9AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8F4DD7F-5C6C-451B-90F2-DBE7D4F6D151}
+	EndGlobalSection
+EndGlobal
